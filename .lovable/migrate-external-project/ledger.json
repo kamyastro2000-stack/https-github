@@ -1,0 +1,10 @@
+{
+  "source":"https://github.com/kamyastro2000-stack/foundation-kit",
+  "capabilities":[
+    {"capability":"Site pages and styling","source":"public GitHub repository","outcome":"migrate","status":"in_progress","next_action":"Recreate routes and verify"},
+    {"capability":"Six disease records and country selections","source":"src/data/diseases.ts","outcome":"migrate","status":"in_progress","next_action":"Copy static data and verify"},
+    {"capability":"Search and interactive UI","source":"src/routes/recherche.tsx","outcome":"migrate","status":"in_progress","next_action":"Improve and verify interactions"},
+    {"capability":"Authentication, database, file uploads, payments, email, external APIs, webhooks and schedules","source":"source inspection","outcome":"not present","status":"verified","next_action":"none"},
+    {"capability":"Public domain cutover","source":"existing published site","outcome":"keep old site unchanged","status":"pending","next_action":"User publishes this project when ready"}
+  ]
+}
