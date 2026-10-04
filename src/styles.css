@@ -7,34 +7,7 @@
 .legal { margin-top: 2.5rem; display: grid; gap: 1rem; line-height: 1.75; } .legal h2 { margin-top: 1.5rem; font-size: 1.35rem; font-weight: 700; } .legal p { color: var(--color-muted-foreground); }
 @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition-duration: 0.01ms !important; } }
 
-/* Motion demo: 9s loop */
-@keyframes md-type { 0%{width:0} 20%,100%{width:9ch} }
-@keyframes md-show { 0%,30%{opacity:0;transform:translateY(8px)} 38%,92%{opacity:1;transform:none} 100%{opacity:0} }
-@keyframes md-pin { 0%,68%{opacity:0;transform:scale(.9)} 75%,92%{opacity:1;transform:none} 100%{opacity:0} }
-@keyframes md-step { 0%,33%{opacity:1} 34%,100%{opacity:.4} }
-.md-type{width:0;animation:md-type 9s steps(9) infinite}
-.md-card{animation:md-show 9s ease-out infinite}
-.md-pin{opacity:0;animation:md-pin 9s ease-out infinite;animation-delay:0s!important}
-.md-step{opacity:.4;animation:md-step 9s infinite}
-@media (prefers-reduced-motion: reduce){.md-type,.md-card,.md-pin,.md-step{animation:none;opacity:1;width:auto}}
-
-/* FX */
-html{scroll-behavior:smooth}
-body{transition:background-color .6s,color .6s}
-[data-reveal]{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
-[data-reveal].is-in{opacity:1;transform:none}
-.fx-tilt{transition:transform .2s ease-out,box-shadow .3s;transform-style:preserve-3d;position:relative}
-.fx-tilt:hover{box-shadow:0 20px 40px -20px color-mix(in oklab,var(--primary) 40%,transparent)}
-.fx-tilt::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(circle at var(--gx,50%) var(--gy,50%),color-mix(in oklab,white 35%,transparent),transparent 50%)}
-.fx-tilt:hover::after{opacity:1}
-.fx-heart{filter:drop-shadow(0 0 12px color-mix(in oklab,var(--primary) 60%,transparent))}
-.fx-ecg{stroke-dasharray:400;stroke-dashoffset:400;animation:ecg 2.4s linear infinite}
-@keyframes ecg{to{stroke-dashoffset:-400}}
-button,a{transition:transform .15s,color .2s,background-color .2s,border-color .2s}
-button:active,a:active{transform:scale(.97)}
-::view-transition-old(root),::view-transition-new(root){animation-duration:.35s}
-@media (prefers-reduced-motion: reduce){[data-reveal]{opacity:1;transform:none;transition:none}.fx-ecg{animation:none}}
 @keyframes enter-soft { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 .animate-enter-soft { animation: enter-soft .55s ease-out both; }
 :focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; }
-@media (prefers-reduced-motion: reduce) { .animate-enter-soft { animation: none; } button, a, body { transition: none !important; } }
+@media (prefers-reduced-motion: reduce) { .animate-enter-soft { animation: none; } *, *::before, *::after { transition-duration: 0.01ms !important; } }

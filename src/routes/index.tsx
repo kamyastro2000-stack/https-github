@@ -38,7 +38,7 @@ function Index() {
       <div className="mx-auto max-w-6xl px-5 py-16 md:py-20">
         <div className="flex flex-wrap items-end justify-between gap-5">
           <div><p className="text-sm font-bold uppercase text-primary">Un exemple concret</p><h2 className="mt-3 font-display text-4xl font-semibold">À quoi sert une fiche santé ?</h2></div>
-          <Button asChild variant="outline"><Link to="/maladies/paludisme">Voir la fiche Paludisme <ArrowRight /></Link></Button>
+          <Button asChild variant="outline"><Link to="/maladies/$slug" params={{ slug: "paludisme" }}>Voir la fiche Paludisme <ArrowRight /></Link></Button>
         </div>
         <div className="mt-8 grid gap-px border bg-border md:grid-cols-3">
           <div className="bg-background p-6"><span className="text-sm font-bold text-primary">01 · RECONNAÎTRE</span><h3 className="mt-3 font-display text-2xl">Les signes</h3><p className="mt-2 text-muted-foreground">Fièvre, frissons, maux de tête et grande fatigue.</p></div>
