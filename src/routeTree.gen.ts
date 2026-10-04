@@ -10,33 +10,116 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ConditionsUtilisationRouteImport } from './routes/conditions-utilisation'
+import { Route as PaysRouteImport } from './routes/pays'
+import { Route as PolitiqueConfidentialiteRouteImport } from './routes/politique-confidentialite'
+import { Route as RechercheRouteImport } from './routes/recherche'
+import { Route as MaladiesIndexRouteImport } from './routes/maladies.index'
+import { Route as MaladiesSlugRouteImport } from './routes/maladies.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ConditionsUtilisationRoute = ConditionsUtilisationRouteImport.update({
+  id: '/conditions-utilisation',
+  path: '/conditions-utilisation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PaysRoute = PaysRouteImport.update({
+  id: '/pays',
+  path: '/pays',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PolitiqueConfidentialiteRoute =
+  PolitiqueConfidentialiteRouteImport.update({
+    id: '/politique-confidentialite',
+    path: '/politique-confidentialite',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const RechercheRoute = RechercheRouteImport.update({
+  id: '/recherche',
+  path: '/recherche',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MaladiesIndexRoute = MaladiesIndexRouteImport.update({
+  id: '/maladies/',
+  path: '/maladies/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MaladiesSlugRoute = MaladiesSlugRouteImport.update({
+  id: '/maladies/$slug',
+  path: '/maladies/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/conditions-utilisation': typeof ConditionsUtilisationRoute
+  '/pays': typeof PaysRoute
+  '/politique-confidentialite': typeof PolitiqueConfidentialiteRoute
+  '/recherche': typeof RechercheRoute
+  '/maladies/$slug': typeof MaladiesSlugRoute
+  '/maladies/': typeof MaladiesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/conditions-utilisation': typeof ConditionsUtilisationRoute
+  '/pays': typeof PaysRoute
+  '/politique-confidentialite': typeof PolitiqueConfidentialiteRoute
+  '/recherche': typeof RechercheRoute
+  '/maladies/$slug': typeof MaladiesSlugRoute
+  '/maladies': typeof MaladiesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/conditions-utilisation': typeof ConditionsUtilisationRoute
+  '/pays': typeof PaysRoute
+  '/politique-confidentialite': typeof PolitiqueConfidentialiteRoute
+  '/recherche': typeof RechercheRoute
+  '/maladies/$slug': typeof MaladiesSlugRoute
+  '/maladies/': typeof MaladiesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/conditions-utilisation'
+    | '/pays'
+    | '/politique-confidentialite'
+    | '/recherche'
+    | '/maladies/$slug'
+    | '/maladies/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/conditions-utilisation'
+    | '/pays'
+    | '/politique-confidentialite'
+    | '/recherche'
+    | '/maladies/$slug'
+    | '/maladies'
+  id:
+    | '__root__'
+    | '/'
+    | '/conditions-utilisation'
+    | '/pays'
+    | '/politique-confidentialite'
+    | '/recherche'
+    | '/maladies/$slug'
+    | '/maladies/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ConditionsUtilisationRoute: typeof ConditionsUtilisationRoute
+  PaysRoute: typeof PaysRoute
+  PolitiqueConfidentialiteRoute: typeof PolitiqueConfidentialiteRoute
+  RechercheRoute: typeof RechercheRoute
+  MaladiesSlugRoute: typeof MaladiesSlugRoute
+  MaladiesIndexRoute: typeof MaladiesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +131,59 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/conditions-utilisation': {
+      id: '/conditions-utilisation'
+      path: '/conditions-utilisation'
+      fullPath: '/conditions-utilisation'
+      preLoaderRoute: typeof ConditionsUtilisationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pays': {
+      id: '/pays'
+      path: '/pays'
+      fullPath: '/pays'
+      preLoaderRoute: typeof PaysRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/politique-confidentialite': {
+      id: '/politique-confidentialite'
+      path: '/politique-confidentialite'
+      fullPath: '/politique-confidentialite'
+      preLoaderRoute: typeof PolitiqueConfidentialiteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/recherche': {
+      id: '/recherche'
+      path: '/recherche'
+      fullPath: '/recherche'
+      preLoaderRoute: typeof RechercheRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/maladies/': {
+      id: '/maladies/'
+      path: '/maladies'
+      fullPath: '/maladies/'
+      preLoaderRoute: typeof MaladiesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/maladies/$slug': {
+      id: '/maladies/$slug'
+      path: '/maladies/$slug'
+      fullPath: '/maladies/$slug'
+      preLoaderRoute: typeof MaladiesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ConditionsUtilisationRoute: ConditionsUtilisationRoute,
+  PaysRoute: PaysRoute,
+  PolitiqueConfidentialiteRoute: PolitiqueConfidentialiteRoute,
+  RechercheRoute: RechercheRoute,
+  MaladiesSlugRoute: MaladiesSlugRoute,
+  MaladiesIndexRoute: MaladiesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
