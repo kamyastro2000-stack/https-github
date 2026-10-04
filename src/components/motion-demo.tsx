@@ -1,49 +1,10 @@
-import { Search, FileText, MapPin } from "lucide-react";
-
+import { Link } from "@tanstack/react-router";
+import { Search, FileText, MapPin, ArrowRight } from "lucide-react";
 const steps = [
-  { icon: Search, title: "Chercher", text: "Tapez une maladie ou un symptôme." },
-  { icon: FileText, title: "Comprendre", text: "Signes, urgences et prévention sur une fiche." },
-  { icon: MapPin, title: "Situer", text: "Voir les pays où elle est la plus présente." },
+  { icon: Search, title: "Chercher", text: "Écrivez le nom d’une maladie ou un signe que vous avez remarqué.", to: "/recherche" as const, action: "Faire une recherche" },
+  { icon: FileText, title: "Lire", text: "Découvrez les signes, les situations urgentes et les gestes de prévention.", to: "/maladies" as const, action: "Voir les fiches" },
+  { icon: MapPin, title: "Choisir un pays", text: "Retrouvez une sélection de fiches classées par pays.", to: "/pays" as const, action: "Voir les pays" },
 ];
-
 export function MotionDemo() {
-  return (
-    <section className="border-b bg-secondary">
-      <div className="mx-auto grid max-w-6xl gap-12 px-5 py-20 lg:grid-cols-2 lg:items-center">
-        <div>
-          <p className="text-sm font-semibold uppercase text-primary">Comment ça marche</p>
-          <h2 className="mt-4 font-display text-4xl font-semibold">De la question à l’information utile en trois gestes</h2>
-          <ol className="mt-8 space-y-5">
-            {steps.map((s, i) => (
-              <li key={s.title} className="md-step flex gap-4" style={{ animationDelay: `${i * 3}s` }}>
-                <s.icon className="mt-1 size-5 shrink-0 text-primary" />
-                <div><p className="font-semibold">{s.title}</p><p className="text-muted-foreground">{s.text}</p></div>
-              </li>
-            ))}
-          </ol>
-        </div>
-        <div aria-hidden className="relative h-80 overflow-hidden rounded-md border bg-background p-6">
-          <div className="md-search flex items-center gap-3 rounded-sm border px-4 py-3">
-            <Search className="size-4 text-muted-foreground" />
-            <span className="md-type overflow-hidden whitespace-nowrap border-r-2 border-primary text-sm">paludisme</span>
-          </div>
-          <div className="md-card mt-5 rounded-sm border p-5">
-            <p className="font-display text-xl font-semibold">Paludisme</p>
-            <div className="mt-3 space-y-2">
-              <div className="md-line h-2 w-full bg-muted" />
-              <div className="md-line h-2 w-4/5 bg-muted" style={{ animationDelay: ".2s" }} />
-              <div className="md-line h-2 w-3/5 bg-accent" style={{ animationDelay: ".4s" }} />
-            </div>
-          </div>
-          <div className="md-map mt-5 flex gap-2">
-            {["Nigeria", "RD Congo", "Côte d’Ivoire"].map((p, i) => (
-              <span key={p} className="md-pin flex items-center gap-1 rounded-sm border px-2 py-1 text-xs" style={{ animationDelay: `${6.2 + i * 0.3}s` }}>
-                <MapPin className="size-3 text-primary" />{p}
-              </span>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
+  return <section className="border-b bg-secondary"><div className="mx-auto max-w-6xl px-5 py-16 md:py-20"><p className="text-sm font-bold uppercase text-primary">Comment utiliser ce guide</p><h2 className="mt-3 max-w-2xl font-display text-4xl font-semibold">Trois façons simples de trouver l’information</h2><div className="mt-9 grid gap-px border bg-border md:grid-cols-3">{steps.map((s,i)=><Link key={s.title} to={s.to} className="group flex min-h-58 flex-col bg-background p-6 transition-colors duration-200 hover:bg-card focus-visible:outline-2 focus-visible:outline-primary"><span className="flex items-center justify-between"><s.icon className="size-7 text-primary"/><span className="font-display text-2xl text-muted-foreground">0{i+1}</span></span><h3 className="mt-6 font-display text-2xl font-semibold">{s.title}</h3><p className="mt-2 leading-6 text-muted-foreground">{s.text}</p><span className="mt-auto flex items-center gap-2 pt-6 text-sm font-semibold text-primary">{s.action} <ArrowRight className="size-4 transition-transform group-hover:translate-x-1"/></span></Link>)}</div></div></section>;
 }

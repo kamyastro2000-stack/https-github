@@ -34,3 +34,7 @@ button,a{transition:transform .15s,color .2s,background-color .2s,border-color .
 button:active,a:active{transform:scale(.97)}
 ::view-transition-old(root),::view-transition-new(root){animation-duration:.35s}
 @media (prefers-reduced-motion: reduce){[data-reveal]{opacity:1;transform:none;transition:none}.fx-ecg{animation:none}}
+@keyframes enter-soft { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.animate-enter-soft { animation: enter-soft .55s ease-out both; }
+:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) { .animate-enter-soft { animation: none; } button, a, body { transition: none !important; } }
